@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="Keywords" content="" />
+        <meta name="Description" content="" />
+        <title>支付页</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/custom.common.js"></script>
+        <!--[if lt IE 9]>
+            <script src="js/html5shiv.js" type="text/javascript"></script>
+            <script src="js/respond.min.js" type="text/javascript"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <div class="main_body">
+            <div class="done_box wp2 clearfix">
+                <div class="f_l"><i></i></div>
+                <div class="f_r">
+                    <div class="creat_order_sn">
+                        <h3>订单提交成功，应付款金额<em>98.00</em>元</h3>
+                        <p>订单号：100023456485698</p>
+                    </div>
+                    <div class="goods_info">
+                        <dl class="clearfix">
+                            <dt>商品列表</dt>
+                            <dd>炒白菜×2,炒白菜×1,炒白菜×2,炒白菜×3,炒白菜×1</dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>送餐地址</dt>
+                            <dd>东莞南城西平二路中熙弥珍道3栋1103 (13602512568)</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="payment_box wp2">
+                <div class="hd">
+                    <ul class="clearfix">
+                        <li class="payment_tab active">网银支付</li>
+                        <li class="payment_tab">支付宝</li>
+                    </ul>
+                </div>
+                <form action="" onSubmit="return checkPayForm(this)">
+                    <div class="bd">
+                        <div class="payment_list">
+                            <ul class="clearfix">
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id1" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank1.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id2" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank2.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id3" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank3.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id4" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank4.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id5" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank5.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id6" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank6.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id7" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank7.png" /></div>
+                                </li>
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id8" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank8.png" /></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="payment_list none">
+                            <ul class="clearfix">
+                                <li>
+                                    <input type="radio" name="payment" value="payment_id9" class="none" />
+                                    <span><i></i></span>
+                                    <div class="payment_imgbox"><img src="images/bank19.png" /></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"><input type="submit" name="pay_arriwe" value="货到付款" class="sm_btn received_pay" /><input type="submit" name="pay_online" value="立即支付" class="sm_btn" /></div>
+                    <input type="hidden" name="order_sn" value="100023456485698" />
+                    <input type="hidden" name="order_amount" value="98.00" />
+                </form>
+            </div>
+<!--            <div class="pay_tips">
+                <div class="hd clearfix"><i class="close_ico"></i></div>
+                <div class="bd clearfix">
+                    <div class="tips_ico"><i></i></div>
+                    <div class="tips_ct">
+                        <p>重要提示：以上参考价格为小行星网通。</p>
+                        <p>重要提示：以上参考价格为小行星网与经销商协<br />定的本人与经销商自行沟通。</p>
+                        <div class="tips_hdl">
+                            <a href="javascript:void(0);">已完成付款</a>
+                            <a href="javascript:void(0);">付款遇到问题</a>
+                        </div>
+                        <a href="javascript:void(0);" class="pay_trouble">返回选择其它支付方式</a>
+                    </div>
+                </div>
+            </div>-->
+			<script type="text/javascript"> 
+			    function checkPayForm(frm){
+					if($("input[name=payment]",frm).filter(":checked")[0]){
+						$(".pay_tips").show();
+						$("body").append("<div class='mask_layer'></div>");
+						return true;
+					}
+					alert("请选择一个支付方式");
+					return false;
+				}
+			              
+                $(function(){		
+					$(".payment_tab").bind("click", function(){
+						$(this).addClass("active").siblings().removeClass("active");
+						$(".payment_list").eq($(this).index()).show().siblings(".payment_list").hide();
+					});
+					$(".payment_list li").bind("click", function(){
+						$(".payment_list li").removeClass("selected");
+						$(this).addClass("selected");
+						$("input",this)[0].checked = 'checked';
+					});
+                }); 
+            </script>
+        </div>
+        
+    </body>
+</html>

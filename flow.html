@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="Keywords" content="" />
+        <meta name="Description" content="" />
+        <title>点餐</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/custom.common.js"></script>
+        <!--[if lt IE 9]>
+            <script src="js/html5shiv.js" type="text/javascript"></script>
+            <script src="js/respond.min.js" type="text/javascript"></script>
+        <![endif]-->
+        <script type="text/javascript">
+			function resetForm(from){
+				from.reset();
+				$("label.error", from).remove();
+			}
+			function showAddressForm(){
+				$("body").append("<div class='mask_layer'></div>");
+				$(".addr_form").addClass("scale-in");
+			}
+			function closeAddressForm(){
+				$(".mask_layer").remove();
+				$(".addr_form").removeClass("scale-in");
+				resetForm($("#address_form")[0]);
+			}
+			function checkVal(obj,e,id){
+				if(!((e.keyCode >= 48 && e.keyCode <=57) || (e.keyCode >= 96 && e.keyCode <=105) || e.keyCode == 8)){
+					if("preventDefault" in e){
+						e.preventDefault();
+					}
+					else {
+						e.returnValue = false;
+					}
+					obj.value = $("#formCart").attr("oriValue");
+					return false;
+				}
+				obj.onblur=function(){
+					if(obj.value == "" || isNaN(obj.value) || obj.value == 0){
+						alert("购买数量必须是大于0的整数！");
+						obj.value = $("#formCart").attr("oriValue");
+						return false;
+					}
+					//change_goods_price(id,obj.value);
+				}
+			}
+			function addNum(obj,id){
+				var value = $(obj).prev().val();
+				$("#formCart").attr("oriValue", value);
+				value++;
+				$(obj).prev().val(value);
+				//change_goods_price(id,value);
+			}
+			function reduceNum(obj,id){
+				var value = $(obj).next().val();
+				if(value > 1){
+					$("#formCart").attr("oriValue", value);
+					value--;
+					$(obj).next().val(value);
+					//change_goods_price(id,value);
+				}
+			}
+        </script>
+    </head>
+
+    <body>
+        <div class="main_body">
+            <div class="flow_box wp2">
+                <h2 class="hd">确认订单</h2>
+                <div class="bd">
+                    <form id="formCart" name="formCart" oriValue="" method="post" action="flow.php">
+                        <div class="shipping_addr"><strong>送到：<i class="triangle"></i></strong><span class="address">东莞南城西平二路中熙弥珍道3栋1103</span> (<span class="phone">13641908526</span>)<a href="javascript:void(0);" class="edit_addr">[修改地址]</a></div>
+                        <div class="order_dishes_list">
+                            <h3 class="shd">商品列表<a href="javascript:void(0);" class="delete_goods"><span class="delete_start">[删除商品]</span><span class="delete_complete none">[完成删除]</span></a></h3>
+                            <ul class="clearfix">
+                                <li>
+                                    <span class="remove_btn"></span>
+                                    <img src="images/dishes_img16.jpg" class="ds_img" />
+                                    <div class="title">猪肉炒白菜</div>
+                                    <div class="change_quantity tc">
+                                    
+                                        <i class="reduce_num" onclick="reduceNum(this,0)">-</i>
+                                        <input type="text" name="goods_number[{$goods.rec_id}]" value="1" size="4" class="inputstyle tc goods_number_{$goods.rec_id}" onFocus="$('#formCart').attr('oriValue', this.value)" onkeydown="checkVal(this,event,0)" />
+                                        <i class="add_num" onclick="addNum(this,0)">+</i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="remove_btn"></span>
+                                    <img src="images/dishes_img6.jpg" class="ds_img" />
+                                    <div class="title">猪肉炒白菜</div>
+                                    <div class="change_quantity tc">
+                                        <i class="reduce_num" onclick="reduceNum(this,0)">-</i>
+                                        <input type="text" name="goods_number[{$goods.rec_id}]" value="1" size="4" class="inputstyle tc goods_number_{$goods.rec_id}" onFocus="$('#formCart').attr('oriValue', this.value)" onkeydown="checkVal(this,event,0)" />
+                                        <i class="add_num" onclick="addNum(this,0)">+</i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="remove_btn"></span>
+                                    <img src="images/dishes_img10.jpg" class="ds_img" />
+                                    <div class="title">猪肉炒白菜</div>
+                                    <div class="change_quantity tc">
+                                        <i class="reduce_num" onclick="reduceNum(this,0)">-</i>
+                                        <input type="text" name="goods_number[{$goods.rec_id}]" value="1" size="4" class="inputstyle tc goods_number_{$goods.rec_id}" onFocus="$('#formCart').attr('oriValue', this.value)" onkeydown="checkVal(this,event,0)" />
+                                        <i class="add_num" onclick="addNum(this,0)">+</i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="remove_btn"></span>
+                                    <img src="images/dishes_img12.jpg" class="ds_img" />
+                                    <div class="title">猪肉炒白菜</div>
+                                    <div class="change_quantity tc">
+                                        <i class="reduce_num" onclick="reduceNum(this,0)">-</i>
+                                        <input type="text" name="goods_number[{$goods.rec_id}]" value="1" size="4" class="inputstyle tc goods_number_{$goods.rec_id}" onFocus="$('#formCart').attr('oriValue', this.value)" onkeydown="checkVal(this,event,0)" />
+                                        <i class="add_num" onclick="addNum(this,0)">+</i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="total_box">
+                            应付款金额：<em class="total_price">¥18</em><br />
+                            <a href="#"><i></i>返回重选</a><input type="submit" value="提交" class="sm_btn" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="dialog addr_form scale-transition">
+            <div class="hd">填写送餐地址<i class="close_dialog" onClick="closeAddressForm()"></i></div>
+            <div class="bd">
+                <form id="address_form" action="">
+                    <dl class="address_item clearfix">
+                        <dt>详细地址</dt>
+                        <dd><input type="text" name="address" class="inputstyle" placeholder="详细街道门牌" /></dd>
+                    </dl>
+                    <dl class="address_item clearfix">
+                        <dt>手机</dt>
+                        <dd><input type="text" name="mobile" class="inputstyle" placeholder="手机号码" /></dd>
+                    </dl>
+                    <div style="padding: 0 15px;">
+                        <input type="button" value="保存" class="sm_btn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+				$(".addr_form .sm_btn").bind("click", function(){
+					var address = $("#address_form input[name=address]").val();
+					var mobile = $("#address_form input[name=mobile]").val();
+					$(".shipping_addr .address").text(address);
+					$(".shipping_addr .phone").text(mobile);
+					closeAddressForm();
+				});
+				$(".edit_addr").bind("click", function(){
+					showAddressForm();
+					$("#address_form input[name=address]").val($(".shipping_addr .address").text());
+					$("#address_form input[name=mobile]").val($(".shipping_addr .phone").text());
+				});
+				$(".remove_btn").bind("click", function(){
+					$(this).parent().remove();
+				});
+				$(".delete_goods").bind("click", function(){
+					$(".remove_btn").toggle();
+					$(this).toggleClass("active");
+					$("span",this).hide();
+					$(this).hasClass("active") ? $(".delete_complete").show() : $(".delete_start").show();
+				});
+			});
+        </script>
+    </body>
+</html>
